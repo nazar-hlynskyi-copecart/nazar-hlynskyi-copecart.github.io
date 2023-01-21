@@ -11,13 +11,10 @@ const textOutput = document.getElementById("text-output");
 const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 if(iOS){
-  // create a MediaStream object
-  const mediaStream = new MediaStream();
   // ask user permission to access the camera
   navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-    // add the track to the MediaStream object
-    mediaStream.addTrack(stream.getVideoTracks()[0]);
-    video.srcObject = mediaStream;
+    const videoTracks = stream.getVideoTracks();
+    window.adapter.browserShim.attachMediaStream(video, videoTracks[0]);
     video.play();
   });
 }else{
@@ -39,7 +36,7 @@ function snap() {
   ctx.drawImage(video, 0, 0);
   canvas.style.display = "block";
   video.style.display = "none";
-  readTextFromImage();
+  // readTextFromImage();
 }
 
 // Function to read text from image using OCR
