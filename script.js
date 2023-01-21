@@ -8,15 +8,29 @@ const ctx = canvas.getContext("2d");
 // Get the text output element
 const textOutput = document.getElementById("text-output");
 
-// Ask for user permission to access the webcam
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then(stream => {
-    video.srcObject = stream;
+const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+if(iOS){
+  // create a MediaStream object
+  const mediaStream = new MediaStream();
+  // ask user permission to access the camera
+  navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+    // add the track to the MediaStream object
+    mediaStream.addTrack(stream.getVideoTracks()[0]);
+    video.srcObject = mediaStream;
     video.play();
-  })
-  .catch(err => {
-    console.error("Webcam access denied", err);
   });
+}else{
+  // Ask for user permission to access the webcam
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      video.srcObject = stream;
+      video.play();
+    })
+    .catch(err => {
+      console.error("Webcam access denied", err);
+    });
+}
 
 // Function to take a picture
 function snap() {
