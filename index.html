@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Webcam Text Reader</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div id="webcam-container">
+      <video id="webcam" width="640" height="480"></video>
+      <button id="snap-button" onclick="snap()">Take Picture</button>
+    </div>
+    <canvas id="picture"></canvas>
+    <div id="text-output"></div>
+    <button id="new-photo-button" onclick="newPhoto()">New Photo</button>
+    <script src="script.js"></script>
+  </body>
+</html>

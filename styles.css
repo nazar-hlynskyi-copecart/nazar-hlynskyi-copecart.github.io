@@ -1,0 +1,26 @@
+#webcam-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#webcam {
+  border: 1px solid black;
+}
+
+#snap-button {
+  margin-top: 10px;
+}
+
+#picture {
+  display: none;
+}
+
+#text-output {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#new-photo-button {
+  margin-top: 10px;
+}
