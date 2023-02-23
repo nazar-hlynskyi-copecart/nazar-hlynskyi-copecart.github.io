@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Webcam Text Reader</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Camera in browsers - pixo</title>
+
+    <!-- imports the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- imports the webpage's javascript file -->
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>1</h1>
-    <div id="webcam-container">
-      <video id="webcam" width="640" height="480"></video>
-      <button id="snap-button" onclick="snap()">Take Picture</button>
-    </div>
-    <canvas id="picture"></canvas>
-    <div id="text-output"></div>
-    <button id="new-photo-button" onclick="newPhoto()">New Photo</button>
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script src="script.js"></script>
+    <h1>Demo - Native camera in browsers</h1>
+
+    <!-- The `label` is attached to the hidden file input -->
+    <label for="cameraFileInput">
+      <span class="btn">Open camera</span>
+
+      <!-- The hidden file `input` for opening the native camera -->
+      <input
+        id="cameraFileInput"
+        type="file"
+        accept="image/*"
+        capture="environment"
+      />
+    </label>
+
+    <!-- displays the picture uploaded from the native camera -->
+    <img id="pictureFromCamera" />
   </body>
 </html>
