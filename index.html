@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Camera in browsers - pixo</title>
+    <title>Camera or Webcam in browsers - pixo</title>
 
     <!-- imports the webpage's stylesheet -->
     <link rel="stylesheet" href="style.css" />
@@ -14,22 +14,23 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>Demo - Native camera in browsers</h1>
+    <h1>Demo - Native camera or webcam in browsers</h1>
 
     <!-- The `label` is attached to the hidden file input -->
-    <label for="cameraFileInput">
-      <span class="btn">Open camera</span>
+    <label for="cameraFileInput" id="openCameraOrWebcam">
+      <span class="btn">Open Camera or Webcam</span>
 
       <!-- The hidden file `input` for opening the native camera -->
       <input
         id="cameraFileInput"
         type="file"
-        accept="image/*"
+        accept="image/*,video/*"
         capture="environment"
+        style="display:none;"
       />
     </label>
 
-    <!-- displays the picture uploaded from the native camera -->
+    <!-- displays the picture or video uploaded from the camera or webcam -->
     <img id="pictureFromCamera" />
   </body>
 </html>
