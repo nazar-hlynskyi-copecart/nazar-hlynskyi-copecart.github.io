@@ -23,3 +23,30 @@ cameraFileInput.addEventListener("change", function () {
       });
   }
 });
+
+function openCameraOrWebcam() {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    cameraFileInput.click();
+  } else {
+    const constraints = {
+      video: true
+    };
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then(function (mediaStream) {
+        const video = document.createElement("video");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.srcObject = mediaStream;
+        pictureFromCamera.appendChild(video);
+        video.play();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
+
+document.getElementById("openCameraOrWebcam").addEventListener("click", function() {
+  openCameraOrWebcam();
+});
